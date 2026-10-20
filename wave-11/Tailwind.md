@@ -46,7 +46,7 @@
         - To break down this styling text-[any color you want]-[the shade of that color]
         - Color shade from lightest to darkest is: 100 (lightest shade), 200, 300, 400, 500, 600, 700, 800, 900 (darkest)
             - No inbetween color ranges only in the whole hundreds: Example 150, 180, 327 DOES NOT EXIST
-
+    - fonts-[family_name] (sans, serif, mono)
 ### Borders
     - set border width: border(1px), border-2 (2px), border-10 (10px)
     - set border color: border-blue-100
