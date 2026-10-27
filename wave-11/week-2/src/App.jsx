@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import CharacterCounter from "./components/useState/CharacterCountInput";
+import ContactForm from "./components/useState/SimpleForm";
+import TodoList from "./components/useState/TodoList";
+
+// const count = 0
+// updaterFunction | setCount
+// ... | spread operator
+
+// [setCount, setCount]
+const initialPerson = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  age: null,
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [person, setPerson] = useState(initialPerson);
+  const [data, setData] = useState();
+  const [pokemon, setPokemon] = useState("ditto");
+
+  const UpdatePerson = () => {
+    person.firstName = "Bob";
+    setPerson({ ...person });
+
+    console.log(person);
+
+    setCount();
+  };
+
+  // life cycle methods
+  // mounts, unmounts,
+
+  useCallBack(
+    () =>
+      async function temp() {
+        try {
+          const response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
+          ).then((res) => res.json());
+
+          if (!response) {
+            throw new Error("can't find response");
+          }
+
+          console.log(response);
+          setData(response);
+        } catch (err) {
+          throw new Error("There was an error: " + err);
+        }
+      },
+  );
+
+  // use for third party connections
+  // dependency array [] - at the start call the function
+  // [dependencies] => when the values of the dependcies update, call the function
+
+  useEffect(() => {
+    temp();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <TodoList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

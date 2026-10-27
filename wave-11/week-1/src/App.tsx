@@ -1,48 +1,25 @@
 import "./App.css";
-import { Card } from "./components/card";
-import { Bread } from "./components/bread";
-import { TrackCard } from "./components/track_card";
-import { Navbar } from "./components/navbar/navbar";
-import { AboutMe } from "./components/contact";
+import { RenderFruitList } from "./mapping/FruitList";
+import { CapitalizeWords } from "./mapping";
+import { ConditionalRender } from "./mapping/ConditionalRender";
+import { AdminsOnly } from "./filtering/AdminsOnly";
+import { PreFilter } from "./filtering/PreFilter";
+import { CartTotal } from "./reducing/CartTotal";
+import { CountOccurences } from "./reducing/CountOccurences";
 
 function App() {
+  const animes = ["One Piece", "Cyberpunk Edge Runners 2", "Bleach", "Boruto"];
 
   return (
-    <>
-      <Navbar />
-      <TrackCard
-        artist="Ray Jepson"
-        track="Blues Skies"
-        album="Day and Night"
-        album_art="album art"
-      />
-      <AboutMe 
-        aboutMe="About me: I like building things."
-        hobby="Hobby: Rock Climbing"
-        biography="I love rock climbing!"
-        address="123 Main St"
-      />
-      <Card
-        name="Alex"
-        age={28}
-        email={"alex@gmail.com"}
-        occupation={"QA software tester"}
-        phoneNumber="1234567890"
-      />
-      <Card
-        name="James"
-        age={28}
-        email="james@gmail.com"
-        occupation="Software Developer"
-        phoneNumber="123-456-7890"
-      />
-      <Bread
-        product_name="Chocolate Chip Banana Bread"
-        description="Banana Bread with Chocolate Chips"
-        price={14.99}
-        image="Image of product"
-      />
-    </>
+    <div>
+      <RenderFruitList />
+      <CapitalizeWords />
+      <ConditionalRender />
+      <AdminsOnly />
+      <PreFilter />
+      <CartTotal />
+      <CountOccurences />
+    </div>
   );
 }
 
@@ -50,7 +27,7 @@ export default App;
 
 /**
  * users card
- * name
+ * names
  * age
  * email
  * phone number
