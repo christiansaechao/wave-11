@@ -10,9 +10,9 @@ export function RenderFruitList() {
       question="Render each fruit inside an <li>."
       dataPreview={fruits}
     >
-      {/* code here */}
+      {fruits.map((fruit) => (
+        <li key={fruit}>{fruit}</li>
+      ))}
     </ProblemCard>
   );
 }
-
-export default RenderFruitList;
